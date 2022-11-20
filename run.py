@@ -1,5 +1,6 @@
 from typing import List
 
+
 def read_input() -> List[str]:
     """ Read multiple lines of the grading comment into a list of strings
     :return:
@@ -17,12 +18,12 @@ def read_input() -> List[str]:
             lines.append(new_line)
 
 
-def add_up(q_num: int, full_mark: float, ec: float=0, index=None) -> float:
+def add_up(q_num: int, full_mark: float, ec: float = 0, index=None) -> float:
     """ Read the list of string, repeatedly prompt the user until the input is correct, and compute the total grade of
     the student.
-    :param q_num: The number of questions in the exam, including the extra credit(EC) question if applicable
-    :param full_mark: The full mark of the exam excluding the EC
-    :param ec: the extra credits in the exam
+    :param q_num: the number of questions in the exam, including the extra credit(EC) question if applicable
+    :param full_mark: the full mark of the exam excluding the EC
+    :param ec: the full score of the ec question. 0 means there is no ec question in the exam.
     :param index: the user specified list of question identifiers in the exam. When provided, it overrides the index automatically generated according to q_num and has_ec
     :return: a float number of the student's grade.
     """
@@ -77,12 +78,13 @@ def add_up(q_num: int, full_mark: float, ec: float=0, index=None) -> float:
                 if act_idx == index:
                     if tot_full_sc != (full_mark + ec):
                         print(
-                            f"The full mark of the exam is {full_mark+ec} whereas the full points of questions add up to {tot_full_sc}")
+                            f"The full mark of the exam is {full_mark + ec} whereas the full points of questions add up to {tot_full_sc}")
                         continue
                 elif act_idx == index[:-1]:
                     if index[-1] == "ec":
                         if tot_full_sc != full_mark:
-                            print("The full mark of the exam excluding the EC is {full_mark}, whereas the full points of the questions except EC add up to {tot_full_sc}")
+                            print(
+                                "The full mark of the exam excluding the EC is {full_mark}, whereas the full points of the questions except EC add up to {tot_full_sc}")
                             continue
                     else:
                         print("The last item of the specified index is missing in the string, and it is not the 'ec'")
@@ -103,14 +105,16 @@ def add_up(q_num: int, full_mark: float, ec: float=0, index=None) -> float:
                     if act_idx == index:
                         if tot_full_sc != (full_mark + ec):
                             print(
-                                f"The full mark of the exam including the ec is {full_mark+ec} whereas the full points of questions add up to {tot_full_sc}")
+                                f"The full mark of the exam including the ec is {full_mark + ec} whereas the full points of questions add up to {tot_full_sc}")
                             continue
                     elif act_idx == index[:-1]:
                         if tot_full_sc != full_mark:
-                            print(f"The full mark of the exam excluding the EC is {full_mark}, whereas the full points of the questions except EC add up to {tot_full_sc}")
+                            print(
+                                f"The full mark of the exam excluding the EC is {full_mark}, whereas the full points of the questions except EC add up to {tot_full_sc}")
                             continue
                     else:
-                        print(f"Index in the string should follow the format: ['1', '2', ..., '{q_num-1}', 'ec']. Only the last item could be omitted.")
+                        print(
+                            f"Index in the string should follow the format: ['1', '2', ..., '{q_num - 1}', 'ec']. Only the last item could be omitted.")
                         continue
 
         print(f"The student's total grade: {tot_act_sc}\n")
