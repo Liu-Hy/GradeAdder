@@ -92,9 +92,12 @@ def add_grades(full_mark: float, ec=0, q_num=None, index=None, neglect_str=["**"
                 print(IE + f"For question {idx}, the line should contain a '/' seperator.")
                 has_error = True
                 break
-            # If there is a bracketed comment at the end of the line, ignore it
+            # If there is a comment at the end of the line preceded by a left bracket or white space, discard it.
+            scores[1] = scores[1].strip()
             if "(" in scores[1]:
                 scores[1] = scores[1].split("(", 1)[0]
+            elif " " in scores:
+                scores[1] = scores[1].split(" ", 1)[0]
             try:
                 act_sc, full_sc = float(scores[0].strip()), float(scores[1].strip())
             except ValueError as e:
