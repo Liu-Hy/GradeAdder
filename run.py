@@ -107,8 +107,10 @@ def add_grades(full_mark: float, ec=0, q_num=None, index=None, neglect_str="*"*3
                             continue
                     else:
                         print(IE + "The last item of the specified index is missing from the string, and it is not the 'ec'")
+                        continue
                 else:
                     print(IE + "The index in the string should match the specified index")
+                    continue
             else:
                 # automatically generate question index
                 index = [str(i) for i in range(1, q_num + 1)]
