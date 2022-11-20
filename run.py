@@ -144,5 +144,5 @@ def add_grades(full_mark: float, ec=0, q_num=None, index=None, neglect_str="*"*3
 if __name__ == '__main__':
     #add_grades(25, ec=1, q_num=14)
     #add_up(25, ec=1, index=[1, 2, 3, 4, "5a", "5b", "5c", 6, 7, 8, 9, 10, 11, "ec"])
-    #add_grades(7, ec=0, index=[1,'2a','2b', 3])
-    add_grades(6, ec=2, index=['Part1-1', '2', 'Part2', "Part3", "ec"])
+    add_grades(7, ec=0, index=[1,'2a','2b', 3])
+    #add_grades(6, ec=2, index=['Part1-1', '2', 'Part2', "Part3", "ec"])
