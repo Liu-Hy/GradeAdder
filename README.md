@@ -1,5 +1,5 @@
 # GradeAdder
-Examples:
+Examples:\
 1.
 ![img_1.png](img_1.png) \
 add_grades(25, ec=1, q_num=14) \
