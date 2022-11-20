@@ -18,7 +18,7 @@ def read_input() -> List[str]:
             lines.append(new_line)
 
 
-def add_up(q_num: int, full_mark: float, ec: float = 0, index=None) -> float:
+def add_up(full_mark: float, ec=0, q_num=None, index=None) -> float:
     """ Read the list of string, repeatedly prompt the user until the input is correct, and compute the total grade of
     the student.
     :param q_num: the number of questions in the exam, including the extra credit(EC) question if applicable
@@ -27,9 +27,17 @@ def add_up(q_num: int, full_mark: float, ec: float = 0, index=None) -> float:
     :param index: the user specified list of question identifiers in the exam. When provided, it overrides the index automatically generated according to q_num and has_ec
     :return: a float number of the student's grade.
     """
-    assert isinstance(q_num, int) and q_num > 0, f"invalid q_num {q_num}"
+    assert not (q_num is None and index is None)
     assert isinstance(full_mark, (float, int)) and full_mark > 0, f"invalid full mark {full_mark}"
     assert isinstance(ec, (float, int)) and ec >= 0, f"invalid ec {ec}"
+    if q_num is not None:
+        assert isinstance(q_num, int) and q_num > 0, f"invalid q_num {q_num}"
+    elif index is not None:
+        assert isinstance(index, list) and len(index) > 0, f"invalid index {index}"
+    else:
+        print("q_num and index cannot both be None")
+        return
+
     # If the exam has an extra credict question, and the user specifies a question index, "ec" must be the last item of the index
     full_mark = float(full_mark)
     ec = float(ec)
@@ -121,4 +129,5 @@ def add_up(q_num: int, full_mark: float, ec: float = 0, index=None) -> float:
 
 
 if __name__ == '__main__':
-    add_up(14, 25, ec=1)
+    add_up(25, ec=1, q_num=14)
+    #add_up(25, ec=1, index=[1, 2, 3, 4, "5a", "5b", "5c", 6, 7, 8, 9, 10, 11, "ec"])
