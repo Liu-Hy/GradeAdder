@@ -20,12 +20,12 @@ def is_header(line: str, neglect_str: List[str]) -> bool:
     """
     Judge if the text line is a header
     :param line: one line of text input
-    :param neglect_str: a list of string symbols at the beginning or end of a text line to indicate this is a header
+    :param neglect_str: a list of string symbols, any of which at the beginning or end of a text line indicates this is a header.
     :return:
     >>> neglect_str = ["**", "__", "--"]
-    >>> is_header("*** Part1", neglect_str)
+    >>> is_header("*** Part1 ***", neglect_str)
     True
-    >>> is_header("Bonus question___", neglect_str)
+    >>> is_header("Bonus question____", neglect_str)
     True
     >>> is_header("''''Question 1''''", neglect_str)
     False
