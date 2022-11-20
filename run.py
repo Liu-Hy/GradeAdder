@@ -16,8 +16,28 @@ def read_input() -> List[str]:
         else:
             lines.append(new_line)
 
+def is_header(line: str, neglect_str: List[str]) -> bool:
+    """
+    Judge if the text line is a header
+    :param line: one line of text input
+    :param neglect_str: a list of string symbols at the beginning or end of a text line to indicate this is a header
+    :return:
+    >>> neglect_str = ["**", "__", "--"]
+    >>> is_header("*** Part1", neglect_str)
+    True
+    >>> is_header("Bonus question___", neglect_str)
+    True
+    >>> is_header("''''Question 1''''", neglect_str)
+    False
+    >>> is_header("_Part 1:", neglect_str)
+    False
+    """
+    for n_str in neglect_str:
+        if line.startswith(n_str) or line.endswith(n_str):
+            return True
+    return False
 
-def add_grades(full_mark: float, ec=0, q_num=None, index=None, neglect_str="*"*3, digits=2) -> float:
+def add_grades(full_mark: float, ec=0, q_num=None, index=None, neglect_str=["**", "__", "--"], digits=2) -> float:
     """ Read the list of string, repeatedly prompt the user until the input is correct, and compute the total grade of
     the student.
     :param full_mark: the full mark of the exam excluding the extra credit (EC)
@@ -56,8 +76,9 @@ def add_grades(full_mark: float, ec=0, q_num=None, index=None, neglect_str="*"*3
         tot_act_sc, tot_full_sc = 0., 0.
         has_error = False
         for k, line in enumerate(lines):
-            # If the line is a divider for different parts of the exam, skip it
-            if line.startswith(neglect_str) or line.endswith(neglect_str):
+            line = line.strip()
+            # If the line is a header for a section of the exam, skip it
+            if is_header(line, neglect_str):
                 continue
             fields = line.split(":", 1)  # only split on the first colon if any
             if len(fields) < 2:
