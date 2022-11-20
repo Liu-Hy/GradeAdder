@@ -125,7 +125,7 @@ def add_up(full_mark: float, ec=0, q_num=None, index=None) -> float:
                             f"Index in the string should follow the format: ['1', '2', ..., '{q_num - 1}', 'ec']. Only the last item could be omitted.")
                         continue
 
-        print(f"The student's total grade: {tot_act_sc}\n")
+            print(f"The student's total grade: {tot_act_sc}\n")
 
 
 if __name__ == '__main__':
