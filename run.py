@@ -17,7 +17,7 @@ def read_input() -> List[str]:
             lines.append(new_line)
 
 
-def add_up(q_num: int, full_mark: float, ec: float, index=None) -> float:
+def add_up(q_num: int, full_mark: float, ec: float=0, index=None) -> float:
     """ Read the list of string, repeatedly prompt the user until the input is correct, and compute the total grade of
     the student.
     :param q_num: The number of questions in the exam, including the extra credit(EC) question if applicable
