@@ -65,9 +65,9 @@ def add_grades(full_mark: float, ec=0, q_num=None, index=None, neglect_str=["**"
     if index is not None:
         index = [str(i).strip() for i in index]
         if "ec" in index and ec == 0:
-            print(PE + "ec is listed in the index but is worth 0 points")
+            print(PE + "ec exists in the index but is worth 0 points")
         if "ec" not in index and ec > 0:
-            print(PE + "ec is not listed in the index but is worth some points")
+            print(PE + "ec is absent from the index but is worth some points")
 
     while True:
         lines = read_input()
@@ -133,14 +133,14 @@ def add_grades(full_mark: float, ec=0, q_num=None, index=None, neglect_str=["**"
                         print(IE + "The last item of the specified index is missing from the string, and it is not the 'ec'")
                         continue
                 else:
-                    print(IE + "The index in the string should match the specified index")
+                    print(IE + "The question index in the string should match the specified index")
                     continue
             else:
                 # automatically generate question index
                 index = [str(i) for i in range(1, q_num + 1)]
                 if ec == 0:
                     if act_idx != index:
-                        print(IE + f"Index in the string should follow the format: ['1', '2', ..., '{q_num}']")
+                        print(IE + f"The question index in the string should follow the format: ['1', '2', ..., '{q_num}']")
                         continue
                     if tot_full_sc != full_mark:
                         print(
@@ -160,7 +160,7 @@ def add_grades(full_mark: float, ec=0, q_num=None, index=None, neglect_str=["**"
                             continue
                     else:
                         print(
-                            IE + f"Index in the string should follow the format: ['1', '2', ..., '{q_num - 1}', 'ec'], where only the last item could be omitted.")
+                            IE + f"The question index in the string should follow the format: ['1', '2', ..., '{q_num - 1}', 'ec'], where only the last item could be omitted.")
                         continue
             if digits > 0:
                 tot_act_sc = round(tot_act_sc, digits)
