@@ -1,4 +1,5 @@
 # GradeAdder
+When running the program, paste the grading comments into the console, and press the Enter key once or twice \
 Examples:
 1. \
 ![img_1.png](img_1.png) \
